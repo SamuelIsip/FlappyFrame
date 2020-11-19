@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ventana</title>
+    <script>
+      var url = location.search;
+      var pajaro = url.substring(url.indexOf("=") + 1, url.length);
+      var vnt = "";
+      var leftV = window.innerWidth / 2 - 100;
+      var topV = parseFloat(window.innerHeight / 2) - 100;
+
+      function izquierda() {
+        leftV -= 30;
+        vnt.moveTo(leftV, topV);
+        vnt.focus();
+      }
+      function derecha() {
+        leftV += 30;
+        vnt.moveTo(leftV, topV);
+        vnt.focus();
+      }
+      function arriba() {
+        topV -= 30;
+        vnt.moveTo(leftV, topV);
+        vnt.focus();
+      }
+      function abajo() {
+        topV += 30;
+        vnt.moveTo(leftV, topV);
+        vnt.focus();
+      }
+      function movimiento(pos) {
+        document.getElementById("fondo").style.backgroundPositionX = pos + "px";
+        setTimeout(movimiento, 100, pos - 10);
+      }
+      function crear() {
+        vnt = window.open(
+          "./" + pajaro,
+          "vnt",
+          "height=160,width=210,top=" + topV + ",left=" + leftV
+        );
+        movimiento(1);
+      }
+    </script>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      #fondo {
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background-image: url(./fondo3.png);
+        background-repeat: repeat-x;
+        background-size: cover;
+        background-position: -10px;
+      }
+      #arriba,
+      #abajo {
+        width: 310px;
+        height: 100px;
+        text-align: center;
+      }
+      #medio {
+        width: 310px;
+        height: 100px;
+      }
+
+      #medio * {
+        float: left;
+        margin: 1px;
+      }
+      img {
+        width: 100px;
+        height: 100px;
+      }
+
+      input {
+        width: 100px;
+        height: 100px;
+        background-color: #00ff00e3;
+        border-radius: 5px;
+        color: #ffffff;
+        font-size: 20px;
+        background: linear-gradient(to bottom, #00ff00e3, #008000e3);
+        box-shadow: 1px 1px 1px #000000;
+      }
+
+      img:hover,
+      input:hover {
+        cursor: pointer;
+        background: linear-gradient(to bottom, #00ff00b2, #00ac009c);
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="fondo"></div>
+    <div id="arriba">
+      <img src="./flecha-hacia-arriba.png" alt="" onclick="arriba()" />
+    </div>
+    <div id="medio">
+      <img src="./flecha-izqa.png" alt="" onclick="izquierda()" />
+      <input type="button" value="START" onclick="crear()" />
+      <img src="./flecha-derecha2.png" alt="" onclick="derecha()" />
+    </div>
+    <div id="abajo">
+      <img src="./flecha-hacia-abajo.png" alt="" onclick="abajo()" />
+    </div>
+  </body>
+</html>

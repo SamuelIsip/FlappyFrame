@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elección</title>
+    <script>
+      function abrirJuego(pajaro) {
+        window.open("./archivos/ventanadirigida.html?pajaro=" + pajaro, "");
+      }
+    </script>
+    <style>
+      body {
+        background-color: #70c5ce;
+        text-align: center;
+      }
+
+      #contenedor {
+        overflow: auto;
+        border: 1px solid #000000;
+        width: 50%;
+        margin: auto;
+      }
+      #contenedor div {
+        margin: 10px;
+        width: 200px;
+        height: 150px;
+        float: left;
+        background: linear-gradient(to bottom, #82e2ec, #487f85);
+        border: 1px solid #0080003d;
+        border-radius: 5px;
+      }
+      #contenedor div:hover {
+        cursor: pointer;
+        background: linear-gradient(to bottom, #95f4ff, #5a9fa7);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ELIJA SU PERSONAJE</h1>
+    <div id="contenedor">
+      <div onclick="abrirJuego('pajaroazul.html')">
+        <img src="./archivos/bluebird2.png" alt="El pajarito se fue" />
+      </div>
+      <div onclick="abrirJuego('pajaromarron.html')">
+        <img src="./archivos/brown2.png" alt="El pajarito se fue" />
+      </div>
+      <div onclick="abrirJuego('pajaroamarillo.html')">
+        <img src="./archivos/yellowbird2.png" alt="El pajarito se fue" />
+      </div>
+    </div>
+  </body>
+</html>
